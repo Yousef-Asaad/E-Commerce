@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { FaStar, FaRegStar } from "react-icons/fa";
-
 // ── Product Detail Top ──
 function ProductDetailTop({ product }) {
   const [selectedImage, setSelectedImage] = useState(product.images[0]);
@@ -9,6 +8,7 @@ function ProductDetailTop({ product }) {
   return (
     <div className="container-fluid py-5 bg-light">
       <div className="row g-4">
+
         {/* Images Column */}
         <div className="col-lg-6">
           <div className="border rounded p-3 text-center">
@@ -18,6 +18,7 @@ function ProductDetailTop({ product }) {
               className="img-fluid mb-3"
               style={{ maxHeight: "400px", objectFit: "contain" }}
             />
+
             <div className="d-flex justify-content-center gap-2">
               {product.images.map((img, i) => (
                 <img
@@ -123,7 +124,10 @@ function ProductDetailTop({ product }) {
               </button>
             </div>
 
-            <button className="btn btn-warning fw-bold text-white">Add to Cart</button>
+            <button className="btn btn-warning fw-bold text-white">
+              Add to Cart
+            </button>
+
             <button className="btn btn-outline-secondary">Wishlist</button>
           </div>
 

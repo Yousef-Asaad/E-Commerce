@@ -6,7 +6,6 @@ import FeaturedProducts from '../components/FeaturedProducts'
 import FeaturedProducts2 from '../components/FeaturedProducts2'
 import MacbookBanner from '../components/MacbookBanner'
 import Newsletter from '../components/Newsletter'
-
 export default function Home() {
   return (
     <>

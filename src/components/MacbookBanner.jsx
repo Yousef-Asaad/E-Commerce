@@ -37,7 +37,9 @@ const news = [
 export default function MacbookBanner() {
   return (
     <>
-      {/* Macbook Banner — Full Width */}
+      {/*  Macbook Banner — Full Width
+          Bootstrap: position-relative, d-flex
+          https://getbootstrap.com/docs/5.3/utilities/position/  */}
       <div style={{background:'#fce8d5'}} className="py-5">
         <div className="page-container">
           <div className="row align-items-center">
@@ -71,17 +73,21 @@ export default function MacbookBanner() {
         </div>
       </div>
 
-      {/* Latest News */}
+      {/*  Latest News
+          Bootstrap: row, col, card
+          https://getbootstrap.com/docs/5.3/components/card/  */}
       <div className="py-5" style={{background:'#f8f9fa'}}>
         <div className="page-container">
           <h5 className="fw-bold text-center mb-4">Latest News</h5>
           <div className="row g-4">
             {news.map(n => (
               <div key={n.id} className="col-lg-4">
+                {/* card
+                    https://getbootstrap.com/docs/5.3/components/card/ */}
                 <div className="news-img-wrap">
-                  <img src={n.img} alt={n.title}
-                       className="card-img-top news-img"
-                       style={{height:'200px', objectFit:'cover'}} />
+                   <img src={n.img} alt={n.title}
+                      className="card-img-top news-img"
+                           style={{height:'200px', objectFit:'cover'}} />
                   <div className="card-body p-3">
                     {/* Meta */}
                     <div className="d-flex align-items-center gap-3 mb-2 text-muted" style={{fontSize:'.78rem'}}>

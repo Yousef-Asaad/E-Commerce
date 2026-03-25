@@ -2,7 +2,6 @@ import { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { FiHeart, FiShoppingCart, FiEye } from 'react-icons/fi'
 import { useCart } from '../context/CartContext'
-
 const featuredProduct = {
   img: 'https://clicon-html.netlify.app/image/product/ps5.png',
   badge1: '32% OFF',
@@ -48,6 +47,7 @@ export default function BestDeals() {
 
   return (
     <div className="page-container py-4">
+
       {/* Header */}
       <div className="d-flex align-items-center justify-content-between mb-3">
         <div className="d-flex align-items-center gap-3">
@@ -100,52 +100,52 @@ export default function BestDeals() {
           </div>
         </div>
 
-        {/* Grid Products */}
-        <div className="col-lg-9">
-          <div className="row g-0">
-            {gridProducts.map((p, i) => (
-              <div key={p.id}
-                   className={`product-card-small col-3 border-end position-relative ${i < 4 ? 'border-bottom' : ''}`}
-                   style={{cursor:'pointer', padding: i < 4 ? '12px 12px 24px' : '24px 12px 12px'}}>
+       {/* Grid Products */}
+<div className="col-lg-9">
+  <div className="row g-0">
+    {gridProducts.map((p, i) => (
+      <div key={p.id}
+           className={`product-card-small col-3 border-end position-relative ${i < 4 ? 'border-bottom' : ''}`}
+           style={{cursor:'pointer', padding: i < 4 ? '12px 12px 24px' : '24px 12px 12px'}}>
 
-                {p.badge && (
-                  <span className="badge position-absolute top-0 start-0 m-1"
-                        style={{background: p.badgeColor, color: p.badgeColor === '#f5c518' ? '#000' : '#fff', fontSize:'.7rem', zIndex:2}}>
-                    {p.badge}
-                  </span>
-                )}
+        {p.badge && (
+          <span className="badge position-absolute top-0 start-0 m-1"
+                style={{background: p.badgeColor, color: p.badgeColor === '#f5c518' ? '#000' : '#fff', fontSize:'.7rem', zIndex:2}}>
+            {p.badge}
+          </span>
+        )}
 
-                <div className="position-relative overflow-hidden" style={{height:'100px'}}>
-                  <img src={p.img} alt={p.name}
-                       className="img-fluid d-block mx-auto"
-                       style={{maxHeight:'100%', objectFit:'contain'}} />
-                  <div className="product-hover-overlay position-absolute top-0 start-0 w-100 h-100 d-flex align-items-center justify-content-center gap-2">
-                    <button className="btn btn-white bg-white rounded-circle p-2 shadow-sm"
-                            onClick={(e) => { e.stopPropagation(); addToWish(p) }}>
-                      <FiHeart size={14} />
-                    </button>
-                    <button className="btn btn-warning rounded-circle p-2 shadow-sm"
-                            onClick={(e) => { e.stopPropagation(); addToCart(p) }}>
-                      <FiShoppingCart size={14} />
-                    </button>
-                    <Link to={`/product/${p.id}`}
-                          className="btn btn-white bg-white rounded-circle p-2 shadow-sm">
-                      <FiEye size={14} />
-                    </Link>
-                  </div>
-                </div>
-
-                <p className="mb-1 mt-2" style={{fontSize:'.78rem', lineHeight:'1.3'}}>{p.name}</p>
-                <div className="d-flex align-items-center gap-2">
-                  {p.oldPrice && (
-                    <span className="text-muted text-decoration-line-through" style={{fontSize:'.75rem'}}>{p.oldPrice}</span>
-                  )}
-                  <span className="fw-bold" style={{color:'#2b6cb0', fontSize:'.85rem'}}>{p.price}</span>
-                </div>
-              </div>
-            ))}
+        <div className="position-relative overflow-hidden" style={{height:'100px'}}>
+          <img src={p.img} alt={p.name}
+               className="img-fluid d-block mx-auto"
+               style={{maxHeight:'100%', objectFit:'contain'}} />
+          <div className="product-hover-overlay position-absolute top-0 start-0 w-100 h-100 d-flex align-items-center justify-content-center gap-2">
+            <button className="btn btn-white bg-white rounded-circle p-2 shadow-sm"
+                    onClick={(e) => { e.stopPropagation(); addToWish(p) }}>
+              <FiHeart size={14} />
+            </button>
+            <button className="btn btn-warning rounded-circle p-2 shadow-sm"
+                    onClick={(e) => { e.stopPropagation(); addToCart(p) }}>
+              <FiShoppingCart size={14} />
+            </button>
+            <Link to={`/product/${p.id}`}
+                  className="btn btn-white bg-white rounded-circle p-2 shadow-sm">
+              <FiEye size={14} />
+            </Link>
           </div>
         </div>
+
+        <p className="mb-1 mt-2" style={{fontSize:'.78rem', lineHeight:'1.3'}}>{p.name}</p>
+        <div className="d-flex align-items-center gap-2">
+          {p.oldPrice && (
+            <span className="text-muted text-decoration-line-through" style={{fontSize:'.75rem'}}>{p.oldPrice}</span>
+          )}
+          <span className="fw-bold" style={{color:'#2b6cb0', fontSize:'.85rem'}}>{p.price}</span>
+        </div>
+      </div>
+    ))}
+  </div>
+</div>
 
       </div>
     </div>

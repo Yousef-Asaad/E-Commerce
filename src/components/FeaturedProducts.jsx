@@ -93,110 +93,115 @@ export default function FeaturedProducts() {
             </div>
           </div>
 
-          {/* Products Grid */}
-          <div className="row row-cols-2 row-cols-md-3 row-cols-lg-4 g-3">
+{/* Products Grid */}
+<div className="row row-cols-2 row-cols-md-3 row-cols-lg-4 g-3">
 
-            {filtered.map((p) => (
-              <div key={p.id} className="col">
-                <div
-                  className="product-card-small border rounded p-3 h-100 position-relative"
-                  style={{ cursor: "pointer", background: "#fff" }}
-                >
+  {filtered.map((p) => (
+    <div key={p.id} className="col">
 
-                  {p.badge && (
-                    <span
-                      className="badge position-absolute top-0 start-0"
-                      style={{
-                        margin: "10px",
-                        background: p.badgeColor,
-                        color: p.badgeColor === "#f5c518" ? "#000" : "#fff",
-                        fontSize: ".7rem",
-                        zIndex: 5
-                      }}
-                    >
-                      {p.badge}
-                    </span>
-                  )}
+      <div
+  className="product-card-small border rounded p-3 h-100 position-relative"
+  style={{ cursor: "pointer", background: "#fff" }}
+>
 
-                  {/* image */}
-                  <div className="position-relative text-center mb-2">
-                    <img
-                      src={p.img}
-                      alt={p.name}
-                      style={{ height: "150px", objectFit: "contain" }}
-                    />
+        {p.badge && (
+         <span
+  className="badge position-absolute top-0 start-0"
+  style={{
+    margin: "10px",
+    background: p.badgeColor,
+    color: p.badgeColor === "#f5c518" ? "#000" : "#fff",
+    fontSize: ".7rem",
+    zIndex: 5
+  }}
+>
+  {p.badge}
+</span>
+        )}
 
-                    {/* hover icons */}
-                    <div className="product-hover-overlay position-absolute top-0 start-0 w-100 h-100 d-flex align-items-center justify-content-center gap-2">
-                      <button
-                        className="btn bg-white rounded-circle p-2 shadow-sm"
-                        onClick={(e) => {
-                          e.stopPropagation();
-                          addToWish(p);
-                        }}
-                      >
-                        <FiHeart size={15} />
-                      </button>
+        {/* image */}
+        <div className="position-relative text-center mb-2">
 
-                      <button
-                        className="btn btn-warning rounded-circle p-2 shadow-sm"
-                        onClick={(e) => {
-                          e.stopPropagation();
-                          addToCart(p);
-                        }}
-                      >
-                        <FiShoppingCart size={15} />
-                      </button>
+          <img
+            src={p.img}
+            alt={p.name}
+            style={{ height: "150px", objectFit: "contain" }}
+          />
 
-                      <Link
-                        to={`/product/${p.id}`}
-                        className="btn bg-white rounded-circle p-2 shadow-sm"
-                      >
-                        <FiEye size={15} />
-                      </Link>
-                    </div>
-                  </div>
+          {/* hover icons */}
+          <div className="product-hover-overlay position-absolute top-0 start-0 w-100 h-100 d-flex align-items-center justify-content-center gap-2">
 
-                  {/* rating */}
-                  <div className="mb-1">
-                    {[1, 2, 3, 4, 5].map((s) => (
-                      <span
-                        key={s}
-                        style={{
-                          color: s <= p.rating ? "#f5c518" : "#ddd",
-                          fontSize: ".9rem",
-                        }}
-                      >
-                        ★
-                      </span>
-                    ))}
-                    <span className="text-muted ms-1" style={{ fontSize: ".75rem" }}>
-                      ({p.reviews})
-                    </span>
-                  </div>
+            <button
+              className="btn bg-white rounded-circle p-2 shadow-sm"
+              onClick={(e) => {
+                e.stopPropagation();
+                addToWish(p);
+              }}
+            >
+              <FiHeart size={15} />
+            </button>
 
-                  {/* name */}
-                  <p style={{ fontSize: ".8rem", lineHeight: "1.3" }}>{p.name}</p>
+            <button
+              className="btn btn-warning rounded-circle p-2 shadow-sm"
+              onClick={(e) => {
+                e.stopPropagation();
+                addToCart(p);
+              }}
+            >
+              <FiShoppingCart size={15} />
+            </button>
 
-                  {/* price */}
-                  <div>
-                    {p.oldPrice && (
-                      <span className="text-muted text-decoration-line-through me-2">
-                        {p.oldPrice}
-                      </span>
-                    )}
-                    <span className="fw-bold text-primary">{p.price}</span>
-                  </div>
-
-                </div>
-              </div>
-            ))}
+            <Link
+              to={`/product/${p.id}`}
+              className="btn bg-white rounded-circle p-2 shadow-sm"
+            >
+              <FiEye size={15} />
+            </Link>
 
           </div>
         </div>
+
+        {/* rating */}
+        <div className="mb-1">
+          {[1, 2, 3, 4, 5].map((s) => (
+            <span
+              key={s}
+              style={{
+                color: s <= p.rating ? "#f5c518" : "#ddd",
+                fontSize: ".9rem",
+              }}
+            >
+              ★
+            </span>
+          ))}
+          <span className="text-muted ms-1" style={{ fontSize: ".75rem" }}>
+            ({p.reviews})
+          </span>
+        </div>
+
+        {/* name */}
+        <p style={{ fontSize: ".8rem", lineHeight: "1.3" }}>{p.name}</p>
+
+        {/* price */}
+        <div>
+          {p.oldPrice && (
+            <span className="text-muted text-decoration-line-through me-2">
+              {p.oldPrice}
+            </span>
+          )}
+          <span className="fw-bold text-primary">{p.price}</span>
+        </div>
+
       </div>
 
-      {/* Bottom Banners */}
+    </div>
+  ))}
+
+</div>
+        </div>
+      </div>
+
+      {/* ══ Bottom Banners ══ */}
       <div className="row g-3 mt-4">
         <div className="col-lg-6">
           <div className="rounded p-4 d-flex align-items-center justify-content-between"

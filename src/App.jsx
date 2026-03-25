@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 import { CartProvider } from "./context/CartContext";
 
 import Navbar from "./components/Navbar";
@@ -14,20 +14,18 @@ import Profile from "./pages/Profile";
 function App() {
   return (
     <CartProvider>
-      <BrowserRouter>
-        <Navbar /> {/* هيظهر في كل الصفحات */}
+      <Navbar /> {/* هيظهر في كل الصفحات */}
 
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/shop" element={<Shop />} />
-          <Route path="/product/:id" element={<SingleProduct />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/signup" element={<SignUp />} />
-          <Route path="/profile" element={<Profile />} />
-        </Routes>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/shop" element={<Shop />} />
+        <Route path="/product/:id" element={<SingleProduct />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/signup" element={<SignUp />} />
+        <Route path="/profile" element={<Profile />} />
+      </Routes>
 
-        <Footer /> {/* هيظهر في كل الصفحات */}
-      </BrowserRouter>
+      <Footer /> {/* هيظهر في كل الصفحات */}
     </CartProvider>
   );
 }

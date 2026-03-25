@@ -2,6 +2,10 @@ import { useState } from 'react'
 import { Link } from 'react-router-dom'
 
 // Shop with Categories — Slider
+// Bootstrap: d-flex, position-relative
+// https://getbootstrap.com/docs/5.3/utilities/flex/
+// https://getbootstrap.com/docs/5.3/utilities/position/
+
 const categories = [
   { id: 1, name: 'Computer & Laptop', img: 'https://clicon-html.netlify.app/image/product/product-9.png' },
   { id: 2, name: 'SmartPhone', img: 'https://clicon-html.netlify.app/image/product/product-10.png' },
@@ -31,10 +35,12 @@ export default function ShopCategories() {
   return (
     <div className="page-container py-5">
 
-      {/* Title */}
+      {/*  Title  */}
       <h5 className="fw-bold text-center mb-4">Shop with Categories</h5>
 
-      {/* Slider */}
+      {/*  Slider
+          Bootstrap: position-relative, d-flex
+          https://getbootstrap.com/docs/5.3/utilities/position/  */}
       <div className="position-relative d-flex align-items-center">
 
         {/* Prev Button */}
@@ -58,6 +64,9 @@ export default function ShopCategories() {
                 to="/shop"
                 className="text-decoration-none text-dark flex-shrink-0"
                 style={{width: `${100 / VISIBLE}%`, padding: '0 8px'}}>
+                {/* card
+                    Bootstrap: border, rounded, text-center
+                    https://getbootstrap.com/docs/5.3/components/card/ */}
                 <div className="border rounded p-3 text-center category-card"
                      style={{transition: 'box-shadow .2s'}}>
                   <img src={cat.img} alt={cat.name}

@@ -13,7 +13,12 @@ export default function Navbar() {
 
   return (
     <>
-      {/* Black Friday Bar */}
+      {/* 
+        1. Black Friday Bar
+        Bootstrap: d-flex, align-items-center, justify-content-between
+        https://getbootstrap.com/docs/5.3/utilities/flex/
+        badge: https://getbootstrap.com/docs/5.3/components/badge/
+      */}
       {showBanner && (
         <div style={{background:'#1a1a1a', color:'#fff'}}>
           <div className="page-container d-flex align-items-center justify-content-between py-2">
@@ -33,7 +38,11 @@ export default function Navbar() {
         </div>
       )}
 
-      {/* Info Bar */}
+      {/* 
+        2. Info Bar
+        Bootstrap: d-flex, gap, align-items-center
+        https://getbootstrap.com/docs/5.3/utilities/flex/
+      */}
       <div style={{background:'#2b6cb0', color:'#fff', fontSize:'.83rem'}}>
         <div className="page-container d-flex align-items-center justify-content-between py-1">
           <span>Welcome to Clicon online eCommerce store.</span>
@@ -58,9 +67,16 @@ export default function Navbar() {
         </div>
       </div>
 
-      {/* Main Bar — Logo + Search + Icons */}
+      {/*
+        3. Main Bar — Logo + Search + Icons
+        Bootstrap: navbar
+        https://getbootstrap.com/docs/5.3/components/navbar/
+        input-group: https://getbootstrap.com/docs/5.3/forms/input-group/
+        position: https://getbootstrap.com/docs/5.3/utilities/position/
+      */}
       <nav style={{background:'#2b6cb0'}}>
         <div className="page-container d-flex align-items-center gap-3 py-3">
+          
           {/* Logo */}
           <Link to="/" className="text-decoration-none d-flex align-items-center gap-2 me-3">
             <span className="rounded-circle border border-white d-flex align-items-center justify-content-center"
@@ -82,8 +98,12 @@ export default function Navbar() {
             </button>
           </div>
 
-          {/* Icons */}
+          {/* Icons
+              https://getbootstrap.com/docs/5.3/utilities/position/
+              badge: https://getbootstrap.com/docs/5.3/components/badge/ */}
           <div className="d-flex align-items-center gap-3 ms-auto">
+
+            {/* Cart */}
             <Link to="/cart" className="text-white text-decoration-none position-relative">
               <FiShoppingCart size={22} />
               <span className="position-absolute badge rounded-pill bg-warning text-dark"
@@ -92,6 +112,7 @@ export default function Navbar() {
               </span>
             </Link>
 
+            {/* Wishlist */}
             <Link to="/wishlist" className="text-white text-decoration-none position-relative">
               <FiHeart size={22} />
               <span className="position-absolute badge rounded-pill bg-warning text-dark"
@@ -100,14 +121,20 @@ export default function Navbar() {
               </span>
             </Link>
 
+            {/* Account */}
             <Link to="/profile" className="text-white text-decoration-none">
               <FiUser size={22} />
             </Link>
+
           </div>
         </div>
       </nav>
 
-      {/* Bottom Bar */}
+      {/* 
+        4. Bottom Bar
+        Bootstrap: d-flex, gap, border-bottom
+        https://getbootstrap.com/docs/5.3/utilities/flex/
+      */}
       <div className="border-bottom bg-white">
         <div className="page-container d-flex align-items-center justify-content-between py-2">
           <div className="d-flex align-items-center gap-4">
