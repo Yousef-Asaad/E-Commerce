@@ -1,29 +1,31 @@
 import { Link } from 'react-router-dom'
 import { useState } from 'react'
-import { FiSearch, FiShoppingCart, FiHeart, FiUser } from 'react-icons/fi'
+import { FiSearch, FiShoppingCart, FiHeart, FiUser, FiEye, FiEyeOff } from 'react-icons/fi'
 import { FaTwitter, FaFacebookF, FaPinterestP, FaYoutube, FaInstagram } from 'react-icons/fa'
 import { HiOutlineMenuAlt1 } from 'react-icons/hi'
 import { MdOutlineLocationOn, MdOutlineCompare, MdOutlineHeadsetMic, MdInfoOutline, MdPhone } from 'react-icons/md'
 import { useCart } from '../context/CartContext'
 
 export default function Navbar() {
+
   const [search, setSearch] = useState('')
   const [showBanner, setShowBanner] = useState(true)
+  const [showLogin, setShowLogin] = useState(false)
+  const [showPassword, setShowPassword] = useState(false)
+
   const { cart, wish } = useCart()
+
+  const cartCount = cart.reduce((acc, item) => acc + item.qty, 0)
+  const wishCount = wish.length
 
   return (
     <>
-      {/* 
-        1. Black Friday Bar
-        Bootstrap: d-flex, align-items-center, justify-content-between
-        https://getbootstrap.com/docs/5.3/utilities/flex/
-        badge: https://getbootstrap.com/docs/5.3/components/badge/
-      */}
+      {/* Black Friday Bar */}
       {showBanner && (
         <div style={{background:'#1a1a1a', color:'#fff'}}>
           <div className="page-container d-flex align-items-center justify-content-between py-2">
             <div className="d-flex align-items-center gap-2">
-              <span className="badge px-2 py-1 fw-bold" 
+              <span className="badge px-2 py-1 fw-bold"
                     style={{background:'#f5c518', color:'#000', fontSize:'.9rem'}}>Black</span>
               <span className="fw-bold fs-5">Friday</span>
             </div>
@@ -38,22 +40,18 @@ export default function Navbar() {
         </div>
       )}
 
-      {/* 
-        2. Info Bar
-        Bootstrap: d-flex, gap, align-items-center
-        https://getbootstrap.com/docs/5.3/utilities/flex/
-      */}
+      {/* Info Bar */}
       <div style={{background:'#2b6cb0', color:'#fff', fontSize:'.83rem'}}>
         <div className="page-container d-flex align-items-center justify-content-between py-1">
           <span>Welcome to Clicon online eCommerce store.</span>
           <div className="d-flex align-items-center gap-3">
             <span>Follow us:</span>
             <div className="d-flex gap-2 align-items-center">
-              <a href="#" className="text-white text-decoration-none"><FaTwitter /></a>
-              <a href="#" className="text-white text-decoration-none"><FaFacebookF /></a>
-              <a href="#" className="text-white text-decoration-none"><FaPinterestP /></a>
-              <a href="#" className="text-white text-decoration-none"><FaYoutube /></a>
-              <a href="#" className="text-white text-decoration-none"><FaInstagram /></a>
+              <a href="#" className="text-white"><FaTwitter /></a>
+              <a href="#" className="text-white"><FaFacebookF /></a>
+              <a href="#" className="text-white"><FaPinterestP /></a>
+              <a href="#" className="text-white"><FaYoutube /></a>
+              <a href="#" className="text-white"><FaInstagram /></a>
             </div>
             <select className="border-0 bg-transparent text-white" style={{outline:'none', fontSize:'.83rem'}}>
               <option style={{color:'#000'}}>Eng</option>
@@ -67,16 +65,10 @@ export default function Navbar() {
         </div>
       </div>
 
-      {/*
-        3. Main Bar — Logo + Search + Icons
-        Bootstrap: navbar
-        https://getbootstrap.com/docs/5.3/components/navbar/
-        input-group: https://getbootstrap.com/docs/5.3/forms/input-group/
-        position: https://getbootstrap.com/docs/5.3/utilities/position/
-      */}
+      {/* Main Navbar */}
       <nav style={{background:'#2b6cb0'}}>
         <div className="page-container d-flex align-items-center gap-3 py-3">
-          
+
           {/* Logo */}
           <Link to="/" className="text-decoration-none d-flex align-items-center gap-2 me-3">
             <span className="rounded-circle border border-white d-flex align-items-center justify-content-center"
@@ -86,8 +78,8 @@ export default function Navbar() {
 
           {/* Search */}
           <div className="input-group flex-grow-1 mx-auto" style={{maxWidth:'600px'}}>
-            <input 
-              type="text" 
+            <input
+              type="text"
               className="form-control border-0 py-2"
               placeholder="Search for anything..."
               value={search}
@@ -98,9 +90,7 @@ export default function Navbar() {
             </button>
           </div>
 
-          {/* Icons
-              https://getbootstrap.com/docs/5.3/utilities/position/
-              badge: https://getbootstrap.com/docs/5.3/components/badge/ */}
+          {/* Icons */}
           <div className="d-flex align-items-center gap-3 ms-auto">
 
             {/* Cart */}
@@ -108,7 +98,7 @@ export default function Navbar() {
               <FiShoppingCart size={22} />
               <span className="position-absolute badge rounded-pill bg-warning text-dark"
                     style={{top:'-8px', right:'-10px', fontSize:'.7rem'}}>
-                {cart.length}
+                {cartCount}
               </span>
             </Link>
 
@@ -117,24 +107,81 @@ export default function Navbar() {
               <FiHeart size={22} />
               <span className="position-absolute badge rounded-pill bg-warning text-dark"
                     style={{top:'-8px', right:'-10px', fontSize:'.7rem'}}>
-                {wish.length}
+                {wishCount}
               </span>
             </Link>
 
-            {/* Account */}
-            <Link to="/profile" className="text-white text-decoration-none">
-              <FiUser size={22} />
-            </Link>
+            {/* Profile — Login Dropdown */}
+            <div className="position-relative">
+              <button className="btn p-0 border-0 text-white"
+                      onClick={() => setShowLogin(!showLogin)}>
+                <FiUser size={22} />
+              </button>
+
+              {/* Overlay */}
+              {showLogin && (
+                <div className="dropdown-overlay" onClick={() => setShowLogin(false)} />
+              )}
+
+              {/* Login Form Dropdown */}
+              {showLogin && (
+                <div className="position-absolute bg-white rounded shadow-lg p-4"
+                     style={{right:0, top:'40px', width:'300px', zIndex:1000}}>
+                  <h6 className="fw-bold text-center mb-3" style={{fontSize:'.95rem'}}>
+                    Sign in to your account
+                  </h6>
+
+                  {/* Email */}
+                  <div className="mb-3">
+                    <label className="form-label" style={{fontSize:'.82rem'}}>Email Address</label>
+                    <input type="email" className="form-control" />
+                  </div>
+
+                  {/* Password */}
+                  <div className="mb-1">
+                    <div className="d-flex justify-content-between align-items-center mb-1">
+                      <label className="form-label mb-0" style={{fontSize:'.82rem'}}>Password</label>
+                      <a href="#" className="text-decoration-none" style={{fontSize:'.8rem', color:'#f07b2d'}}>
+                        Forget Password
+                      </a>
+                    </div>
+                    <div className="position-relative">
+                      <input type={showPassword ? 'text' : 'password'}
+                             className="form-control pe-5" />
+                      <button className="btn p-0 position-absolute border-0 bg-transparent"
+                              style={{top:'50%', right:'12px', transform:'translateY(-50%)', color:'#999'}}
+                              onClick={() => setShowPassword(!showPassword)}>
+                        {showPassword ? <FiEyeOff size={16} /> : <FiEye size={16} />}
+                      </button>
+                    </div>
+                  </div>
+
+                  {/* Login Button */}
+                  <button className="btn btn-save w-100 fw-bold px-4 text-white"
+                   style={{background:'#f07b2d', border:'2px solid #f07b2d'}}>
+                    LOGIN → 
+                  </button>
+
+                  {/* Create Account */}
+                  <p className="text-center text-muted mb-2" style={{fontSize:'.82rem'}}>
+                    Don't have account
+                  </p>
+                  <Link to="/signup"
+                        onClick={() => setShowLogin(false)}
+                        className="btn w-100 fw-bold text-decoration-none d-block text-center"
+                        style={{border:'2px solid #f07b2d', color:'#f07b2d', background:'transparent'}}>
+                    CREATE ACCOUNT
+                  </Link>
+
+                </div>
+              )}
+            </div>
 
           </div>
         </div>
       </nav>
 
-      {/* 
-        4. Bottom Bar
-        Bootstrap: d-flex, gap, border-bottom
-        https://getbootstrap.com/docs/5.3/utilities/flex/
-      */}
+      {/* Bottom Bar */}
       <div className="border-bottom bg-white">
         <div className="page-container d-flex align-items-center justify-content-between py-2">
           <div className="d-flex align-items-center gap-4">

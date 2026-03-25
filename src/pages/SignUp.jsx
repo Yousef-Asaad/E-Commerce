@@ -1,22 +1,9 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import Breadcrumbs from "../components/Breadcrumbs"; // استدعاء كومبوننت البريدمكر
 
 function SignUp() {
-  const breadcrumbItems = [
-    { label: "Home", path: "/" },
-    { label: "Account", path: "/signup" },
-    { label: "Sign Up" }
-  ];
-
   return (
     <div className="container-fluid bg-light min-vh-100 py-5 d-flex flex-column align-items-center">
-
-      {/* Breadcrumb فوق الكارد */}
-      <div className="w-100 mb-3" style={{ maxWidth: "400px" }}>
-        <Breadcrumbs items={breadcrumbItems} />
-      </div>
-
       {/* Card الفورم */}
       <div className="card shadow p-4" style={{ maxWidth: "400px", width: "100%" }}>
         <header className="text-center mb-4">

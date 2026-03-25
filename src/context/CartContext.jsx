@@ -8,22 +8,25 @@ export function CartProvider({ children }) {
 
   const addToCart = (product) => {
     setCart(prev => {
-      const exists = prev.find(p => p.id === product.id)
-      if (exists) return prev.map(p => p.id === product.id ? {...p, qty: p.qty + 1} : p)
+      const exists = prev.find(p => p._id === product._id)
+      if (exists) return prev.map(p => p._id === product._id ? {...p, qty: p.qty + 1} : p)
       return [...prev, {...product, qty: 1}]
     })
   }
 
   const addToWish = (product) => {
     setWish(prev => {
-      const exists = prev.find(p => p.id === product.id)
-      if (exists) return prev.filter(p => p.id !== product.id)
+      const exists = prev.find(p => p._id === product._id)
+      if (exists) return prev.filter(p => p._id !== product._id)
       return [...prev, product]
     })
   }
 
+  // ✅ أضفنا دالة clearCart
+  const clearCart = () => setCart([])
+
   return (
-    <CartContext.Provider value={{ cart, wish, addToCart, addToWish }}>
+    <CartContext.Provider value={{ cart, wish, addToCart, addToWish, clearCart }}>
       {children}
     </CartContext.Provider>
   )

@@ -1,10 +1,9 @@
-// src/components/Breadcrumbs.jsx
 import React from "react";
 import { Link } from "react-router-dom";
 
-function Breadcrumbs({ items }) {
+export default function Breadcrumbs({ items }) {
   return (
-    <nav aria-label="breadcrumb" className="mb-4">
+    <nav aria-label="breadcrumb" className="mb-3">
       <ol className="breadcrumb">
         {items.map((item, index) => (
           <li
@@ -15,9 +14,7 @@ function Breadcrumbs({ items }) {
             {index === items.length - 1 ? (
               item.label
             ) : (
-              <Link to={item.path} className="text-decoration-none">
-                {item.label}
-              </Link>
+              <Link to={item.path}>{item.label}</Link>
             )}
           </li>
         ))}
@@ -25,5 +22,3 @@ function Breadcrumbs({ items }) {
     </nav>
   );
 }
-
-export default Breadcrumbs;

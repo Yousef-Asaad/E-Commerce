@@ -1,22 +1,9 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import Breadcrumbs from "../components/Breadcrumbs";
 
 function Login() {
-  const breadcrumbItems = [
-    { label: "Home", path: "/" },
-    { label: "Account", path: "/login" },
-    { label: "Sign In" }
-  ];
-
   return (
     <div className="container-fluid bg-light min-vh-100 py-5 d-flex flex-column align-items-center">
-
-      {/* Breadcrumb فوق الفورم */}
-      <div className="w-100 mb-3" style={{ maxWidth: "420px" }}>
-        <Breadcrumbs items={breadcrumbItems} />
-      </div>
-
       {/* Card الفورم */}
       <div className="card shadow p-4" style={{ maxWidth: "420px", width: "100%" }}>
         <header className="text-center mb-4">
