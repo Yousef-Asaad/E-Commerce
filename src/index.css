@@ -1,0 +1,231 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  width: 100%;
+  overflow-x: hidden;
+}
+
+.page-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* Product Card Hover Overlay */
+.product-hover-overlay {
+  opacity: 0;
+  transition: opacity .3s ease;
+  background: rgba(255,255,255,0.7);
+}
+
+.product-card-small:hover .product-hover-overlay {
+  opacity: 1;
+}
+
+/* Icon buttons — ابيض افتراضي */
+.product-hover-overlay button,
+.product-hover-overlay a {
+  background: white !important;
+  border: none !important;
+  transition: all .2s ease;
+}
+
+/* لما تقف على أيقونة معينة بس */
+.product-hover-overlay button:hover,
+.product-hover-overlay a:hover {
+  background: #f5c518 !important;
+  transform: scale(1.15);
+}
+/* Category Card Hover */
+.category-card:hover {
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1) !important;
+  border-color: #f07b2d !important;
+}
+/* Categories Slider */
+.categories-wrapper {
+  overflow: hidden;
+  width: 100%;
+}
+
+.categories-track {
+  display: flex;
+  transition: transform .4s ease;
+}
+.product-card-small{
+  transition: .25s;
+}
+
+.product-card-small:hover{
+  box-shadow: 0 8px 20px rgba(0,0,0,.08);
+}
+
+.product-hover-overlay{
+  opacity:0;
+  background: rgba(255,255,255,.7);
+  transition:.25s;
+}
+
+.product-card-small:hover .product-hover-overlay{
+  opacity:1;
+}
+/* Flash Sale Card Hover */
+.flash-card {
+  transition: transform .2s ease, box-shadow .2s ease;
+}
+
+.flash-card:hover {
+  transform: scale(1.03);
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1) !important;
+}
+.promo-banner {
+  background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+  padding: 60px 0;
+}
+.promo-banner img {
+  max-width: 100%;
+  border-radius: 10px;
+}
+/* Profile Sidebar Hover */
+.sidebar-item {
+  transition: background .2s ease, color .2s ease;
+}
+
+.sidebar-item:hover {
+  background: #fff3ec !important;
+  color: #f07b2d !important;
+}
+/* Save Changes Button Hover */
+.btn-save {
+  transition: all .2s ease;
+}
+.btn-save:hover {
+  background: #fff !important;
+  color: #000 !important;
+  border: 2px solid #f07b2d !important;
+}
+/* News Card Image Zoom */
+.news-img {
+  transition: transform .3s ease;
+}
+
+.news-img:hover {
+  transform: scale(1.05);
+}
+
+.news-img-wrap {
+  overflow: hidden;
+}
+/* ── General Container ── */
+.container-fluid.bg-light {
+  background-color: #f8f8f8 !important;
+}
+
+/* ── Card Borders + Shadows ── */
+.border.rounded {
+  border-radius: 0.5rem !important;
+  box-shadow: 0 0.125rem 0.25rem rgba(0,0,0,0.075);
+  background-color: #fff;
+}
+
+/* ── Product Images ── */
+.img-fluid {
+  max-width: 100%;
+}
+
+.img-thumbnail {
+  transition: all 0.3s ease;
+}
+
+.img-thumbnail:hover {
+  transform: scale(1.05);
+  border-color: #f07b2d !important;
+}
+
+/* ── Product Options Color / Size ── */
+.d-flex.gap-2 div[style*="background"] {
+  border-radius: 50%;
+  transition: all 0.3s ease;
+}
+
+.d-flex.gap-2 div[style*="background"]:hover {
+  border: 2px solid #f07b2d !important;
+}
+
+/* ── Buttons ── */
+.btn-warning {
+  background-color: #f07b2d !important;
+  border-color: #f07b2d !important;
+  transition: all 0.3s ease;
+}
+
+.btn-warning:hover {
+  background-color: #d9651f !important;
+  border-color: #d9651f !important;
+}
+
+.btn-outline-secondary {
+  transition: all 0.3s ease;
+}
+
+.btn-outline-secondary:hover {
+  background-color: #f8f8f8;
+  border-color: #f07b2d;
+  color: #f07b2d;
+}
+
+/* ── Tabs ── */
+.nav-tabs .nav-link {
+  font-weight: 500;
+  color: #333;
+  transition: all 0.3s ease;
+}
+
+.nav-tabs .nav-link.active {
+  color: #f07b2d;
+  border-color: #dee2e6 #dee2e6 #f07b2d;
+  font-weight: 600;
+}
+
+.nav-tabs .nav-link:hover {
+  color: #f07b2d;
+}
+
+/* ── List Info ── */
+ul.list-unstyled li {
+  padding: 0.25rem 0;
+  font-size: 0.9rem;
+}
+
+/* ── Quantity Input ── */
+.input-group .form-control {
+  border-radius: 0;
+}
+
+.input-group .btn {
+  border-radius: 0;
+}
+
+/* ── Responsive Tweaks ── */
+@media (max-width: 991px) {
+  .col-lg-6 {
+    text-align: center;
+  }
+
+  .col-lg-6 img {
+    margin: 0 auto;
+  }
+}
+
+@media (max-width: 575px) {
+  .input-group {
+    width: 100% !important;
+  }
+
+  .btn-warning {
+    width: 100%;
+  }
+}
