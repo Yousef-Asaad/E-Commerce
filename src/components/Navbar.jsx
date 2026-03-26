@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom'
+import { Link, NavLink } from 'react-router-dom'
 import { useState } from 'react'
 import { FiSearch, FiShoppingCart, FiHeart, FiUser, FiEye, FiEyeOff } from 'react-icons/fi'
 import { FaTwitter, FaFacebookF, FaPinterestP, FaYoutube, FaInstagram } from 'react-icons/fa'
@@ -204,6 +204,36 @@ export default function Navbar() {
           <div className="d-flex align-items-center gap-2 text-dark fw-semibold" style={{fontSize:'.88rem'}}>
             <MdPhone /> +1-202-555-0104
           </div>
+        </div>
+      </div>
+       {/* ══ Nav Links Bar — شريط جديد ══ */}
+      <div className="bg-white border-bottom">
+        <div className="page-container d-flex align-items-center gap-4 py-2">
+          {[
+            { to: '/', label: 'Home' },
+            { to: '/login', label: 'Login' },
+            { to: '/signup', label: 'Signup' },
+            { to: '/shop', label: 'Shop' },
+            { to: '/cart', label: 'Cart' },
+            { to: '/wishlist', label: 'Wishlist' },
+            { to: '/profile', label: 'Profile' },
+            { to: '/checkout', label: 'Checkout' },
+          ].map(item => (
+            <NavLink
+              key={item.to}
+              to={item.to}
+              end={item.to === '/'}
+              className="text-decoration-none fw-semibold"
+              style={({ isActive }) => ({
+                fontSize: '.88rem',
+                color: isActive ? '#f07b2d' : '#333',
+                borderBottom: isActive ? '2px solid #f07b2d' : '2px solid transparent',
+                paddingBottom: '2px',
+                transition: 'all .2s'
+              })}>
+              {item.label}
+            </NavLink>
+          ))}
         </div>
       </div>
     </>
