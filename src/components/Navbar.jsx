@@ -33,7 +33,8 @@ export default function Navbar() {
               Up to <span className="fw-bold text-warning" style={{fontSize:'1.8rem'}}>59%</span> OFF
             </div>
             <div className="d-flex align-items-center gap-3">
-              <button className="btn btn-warning fw-bold px-4">SHOP NOW →</button>
+              <button className="btn btn-save fw-bold px-4 text-white"
+                            style={{ background: '#f07b2d', border: '2px solid #f07b2d' }}>SHOP NOW →</button>
               <button className="btn-close btn-close-white" onClick={() => setShowBanner(false)}></button>
             </div>
           </div>

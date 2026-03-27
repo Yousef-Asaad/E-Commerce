@@ -40,7 +40,8 @@ function SignUp() {
             </label>
           </div>
 
-          <button type="submit" className="btn btn-warning w-100 fw-bold mb-3">
+          <button type="submit" className="btn btn-save w-100 fw-bold px-4 text-white"
+               style={{ background: '#f07b2d', border: '2px solid #f07b2d' }}>
             SIGN UP
           </button>
 

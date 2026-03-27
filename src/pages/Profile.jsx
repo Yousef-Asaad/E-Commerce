@@ -143,9 +143,100 @@ export default function Profile() {
               </div>
             </div>
           </div>
+{/* ── Billing + Shipping Address ── */}
+            <div className="row g-4 mb-4">
+              {['BILLING ADDRESS', 'SHIPPING ADDRESS'].map(type => (
+                <div key={type} className="col-md-6">
+                  <div className="border rounded p-4">
+                    <h6 className="fw-bold mb-4" style={{fontSize:'.88rem', letterSpacing:'.5px'}}>{type}</h6>
+                    <div className="row g-3">
+                      <div className="col-6">
+                        <label className="form-label" style={{fontSize:'.82rem'}}>First Name</label>
+                        <input type="text" className="form-control" defaultValue="Kevin" />
+                      </div>
+                      <div className="col-6">
+                        <label className="form-label" style={{fontSize:'.82rem'}}>Last Name</label>
+                        <input type="text" className="form-control" defaultValue="Gilbert" />
+                      </div>
+                      <div className="col-12">
+                        <label className="form-label" style={{fontSize:'.82rem'}}>Company Name (Optional)</label>
+                        <input type="text" className="form-control" />
+                      </div>
+                      <div className="col-12">
+                        <label className="form-label" style={{fontSize:'.82rem'}}>Address</label>
+                        <input type="text" className="form-control"
+                               defaultValue="Road No. 13/x, Housenex: 1322C, Plot No. 98" />
+                      </div>
+                      <div className="col-12">
+                        <label className="form-label" style={{fontSize:'.82rem'}}>Country</label>
+                        <select className="form-select">
+                          <option>Bangladesh</option>
+                          <option>India</option>
+                          <option>Qatar</option>
+                        </select>
+                      </div>
+                      <div className="col-12">
+                        <label className="form-label" style={{fontSize:'.82rem'}}>Region/State</label>
+                        <select className="form-select">
+                          <option>Dhaka</option>
+                          <option>Manikganj</option>
+                          <option>Uttara</option>
+                        </select>
+                      </div>
+                      <div className="col-6">
+                        <label className="form-label" style={{fontSize:'.82rem'}}>City</label>
+                        <input type="text" className="form-control" defaultValue="Dhaka" />
+                      </div>
+                      <div className="col-6">
+                        <label className="form-label" style={{fontSize:'.82rem'}}>Zip Code</label>
+                        <input type="text" className="form-control" defaultValue="1207" />
+                      </div>
+                      <div className="col-12">
+                        <label className="form-label" style={{fontSize:'.82rem'}}>Email</label>
+                        <input type="email" className="form-control" defaultValue="kevin1234@gmail.com" />
+                      </div>
+                      <div className="col-12">
+                        <label className="form-label" style={{fontSize:'.82rem'}}>Phone Number</label>
+                        <input type="text" className="form-control" defaultValue="+1-906-555-0148" />
+                      </div>
+                      <div className="col-12">
+                        <button className="btn btn-save fw-bold px-4 text-white"
+                            style={{ background: '#f07b2d', border: '2px solid #f07b2d' }}>
+                          SAVE CHANGES
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
 
-          {/* باقي الصفحة تبقى كما هي... Billing, Shipping, Change Password */}
-          {/* ... */}
+            {/* ── Change Password ── */}
+            <div className="border rounded p-4">
+              <h6 className="fw-bold mb-4" style={{fontSize:'.88rem', letterSpacing:'.5px'}}>
+                CHANGE PASSWORD
+              </h6>
+              <div className="row g-3" style={{maxWidth:'500px'}}>
+                <div className="col-12">
+                  <label className="form-label" style={{fontSize:'.82rem'}}>Current Password</label>
+                  <input type="password" className="form-control" />
+                </div>
+                <div className="col-12">
+                  <label className="form-label" style={{fontSize:'.82rem'}}>New Password</label>
+                  <input type="password" className="form-control" />
+                </div>
+                <div className="col-12">
+                  <label className="form-label" style={{fontSize:'.82rem'}}>Confirm Password</label>
+                  <input type="password" className="form-control" />
+                </div>
+                <div className="col-12">
+                  <button className="btn btn-save fw-bold px-4 text-white"
+                            style={{ background: '#f07b2d', border: '2px solid #f07b2d' }}>
+                    CHANGE PASSWORD
+                  </button>
+                </div>
+              </div>
+            </div>
         </div>
       </div>
     </div>
