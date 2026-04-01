@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import { FaStar, FaRegStar } from "react-icons/fa";
 // ── Product Detail Top ──
-function ProductDetailTop({ product }) {
+function ProductDetailTop({ product }) {//ده بيعرض الصور و التفاصيل الأساسية للمنتج
+  //
   const [selectedImage, setSelectedImage] = useState(product.images[0]);
   const [quantity, setQuantity] = useState(1);
 

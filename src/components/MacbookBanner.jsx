@@ -91,9 +91,12 @@ export default function MacbookBanner() {
                   <div className="card-body p-3">
                     {/* Meta */}
                     <div className="d-flex align-items-center gap-3 mb-2 text-muted" style={{fontSize:'.78rem'}}>
-                      <span>👤 {n.author}</span>
-                      <span>📅 {n.date}</span>
-                      <span>💬 {n.comments}</span>
+                      {/* <span><FaUser size={13}/> {n.author}</span>
+                      <span><FaCalendarAlt size={13}/> {n.date}</span>
+                      <span><FaComment size={13}/> {n.comments}</span> */}
+                      <span><i className="fa-solid fa-user"></i> {n.author}</span>
+                      <span><i className="fa-solid fa-calendar"></i> {n.date}</span>
+                      <span><i className="fa-solid fa-comment"></i> {n.comments}</span>
                     </div>
                     <h6 className="fw-bold mb-2" style={{fontSize:'.88rem', lineHeight:'1.4'}}>
                       {n.title}

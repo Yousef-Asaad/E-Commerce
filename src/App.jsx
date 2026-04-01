@@ -1,7 +1,6 @@
 import { Routes, Route } from "react-router-dom";
 import { CartProvider } from "./context/CartContext";
 import Layout from "./components/Layout";
-
 import Home from "./pages/Home";
 import Shop from "./pages/Shop";
 import SingleProduct from "./pages/SingleProduct";
@@ -11,7 +10,30 @@ import Profile from "./pages/Profile";
 import Cart from "./pages/Cart.jsx";
 import Checkout from "./pages/Checkout.jsx";
 import Wishlist from "./pages/Wishlist";
+import NotFound from "./pages/NotFound";
 
+/* import React from "react";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { CartProvider } from "./context/CartContext";
+
+import Layout from "./components/Layout";
+import Home from "./pages/Home";
+import Shop from "./pages/Shop";
+import SingleProduct from "./pages/SingleProduct";
+import Login from "./pages/Login";
+import SignUp from "./pages/SignUp";
+import Profile from "./pages/Profile";
+import Cart from "./pages/Cart.jsx";
+import Checkout from "./pages/Checkout.jsx";
+import Wishlist from "./pages/Wishlist";
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <Layout breadcrumbItems={[{ label: "Home", path: "/" }]} />,
+    children: [
+      { index: true, element: <Home /> }, 
+      { path: "shop", element: <Shop /> },
+        */ 
 function App() {
   return (
     <CartProvider>
@@ -52,6 +74,8 @@ function App() {
           <Route path="/profile" element={<Profile />} />
         </Route>
 
+        <Route path="*" element={<NotFound />} />
+        
       </Routes>
     </CartProvider>
   );

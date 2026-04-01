@@ -26,19 +26,19 @@ function Shop() {
 
   const { addToCart, addToWish, wish } = useCart();
 
-  useEffect(() => {
+  useEffect(() => {//ده بيعمل request أول ما الصفحة تفتح
     const fetchProducts = async () => {
       try {
-        const res = await API.get("/products");
-        setProducts(res.data);
+        const res = await API.get("/products");//ده بيجيب المنتجات من الباك
+        setProducts(res.data);//بيخزن المنتجات فى ال state عشان نقدر نعرضها
       } catch (error) {
         console.log(error);
       }
     };
     fetchProducts();
-  }, []);
+  }, []);//ال array الفاضية معناها ان ال useEffect ده هيشتغل مرة واحدة لما الصفحة تفتح بس
 
-  const filteredProducts = products
+  const filteredProducts = products 
     .filter(p => filters.category === "All" || p.category === filters.category)
     .filter(p => filters.color === "All" || p.color === filters.color)
     .filter(p => filters.size === "All" || p.size === filters.size)
@@ -51,10 +51,10 @@ function Shop() {
       return 0;
     });
 
-  const handlePriceChange = (e) =>
+  const handlePriceChange = (e) =>//ده بيغير الحد الأقصى للسعر لما المستخدم يحرك ال slider
     setFilters({ ...filters, price: [0, Number(e.target.value)] });
 
-  const isInWish = (id) => wish.some(item => item._id === id);
+  const isInWish = (id) => wish.some(item => item._id === id);//ده بيرجع true لو المنتج موجود فى ال wishlist
 
   return (
     <div className="container-fluid bg-light min-vh-100 py-5">

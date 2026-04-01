@@ -14,18 +14,18 @@ export function CartProvider({ children }) {
     return savedWish ? JSON.parse(savedWish) : [];
   });
 
-  // حفظ الكارت في LocalStorage
+  
   useEffect(() => {
     localStorage.setItem("cart", JSON.stringify(cart));
   }, [cart]);
 
-  // حفظ الـ wishlist
+     
   useEffect(() => {
     localStorage.setItem("wish", JSON.stringify(wish));
   }, [wish]);
 
 
-  // إضافة منتج للكارت
+     
   const addToCart = (product) => {
     setCart(prev => {
 
@@ -33,34 +33,25 @@ export function CartProvider({ children }) {
 
       if (exists) {
         return prev.map(p =>
-          p._id === product._id
-            ? { ...p, qty: p.qty + 1 }
-            : p
+          p._id === product._id ? { ...p, qty: p.qty + 1 }: p
         );
       }
-
       return [...prev, { ...product, qty: 1 }];
     });
   };
 
 
-  // حذف منتج
   const removeFromCart = (id) => {
     setCart(prev => prev.filter(p => p._id !== id));
   };
 
-
-  // تعديل الكمية
+  
   const updateQty = (id, qty) => {
-    setCart(prev =>
-      prev.map(p =>
-        p._id === id ? { ...p, qty } : p
-      )
+    setCart(prev => prev.map(p => p._id === id ? { ...p, qty } : p )
     );
   };
 
-
-  // إضافة للـ wishlist
+   
   const addToWish = (product) => {
 
     setWish(prev => {
@@ -95,3 +86,7 @@ export function CartProvider({ children }) {
 }
 
 export const useCart = () => useContext(CartContext);
+
+
+// المخزن والمفتاح
+//useContext(CartContext)
